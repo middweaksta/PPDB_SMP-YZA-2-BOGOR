@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Admin - SMP YZA 2 Bogor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html, body { height: 100%; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-gray-100">
+      <header class="bg-[#3d6625] py-3 px-6 flex items-center justify-between shadow-md">
+        <a href="../html/index.html" class="flex items-center gap-3">
+          <img src="https://www.upload.ee/image/19236257/BYZAD.png" alt="Logo SMP YZA 2 Bogor" class="w-12 h-12 rounded-full object-cover">
+          <span class="text-white text-xl font-bold tracking-wide">YZA 2 BOGOR - ADMIN</span>
+        </a>
+        <div class="flex items-center gap-4">
+          <span id="admin-name" class="text-white">Selamat datang, Admin</span>
+          <a href="../public/php/logout.php" onclick="return confirm('Apakah Anda yakin ingin logout?');" class="px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20">Logout</a>
+        </div>
+      </header>
+
+      <div class="flex">
+        <nav class="w-64 bg-white shadow-lg min-h-screen">
+          <div class="p-6">
+            <h2 class="text-lg font-semibold text-[#3d6625] mb-4">Menu Admin</h2>
+            <ul class="space-y-2">
+<li><a href="dashboard.html" class="block px-4 py-2 bg-[#3d6625] text-white rounded-lg">Dashboard</a></li>
+<li><a href="user-management-fixed.php" class="block px-4 py-2 text-gray-700 hover:bg-[#f0f9eb] rounded-lg transition-colors">Kelola User & Logs</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="flex-1 p-6">
+          <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col gap-4 mb-6 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h1 class="text-3xl font-bold text-[#3d6625]">Dashboard Admin</h1>
+                <p class="text-gray-600">Ringkasan pendaftaran PPDB dan akses cepat ke panel konten.</p>
+              </div>
+              <div id="status-banner" class="hidden rounded-lg bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3"></div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+              <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <p class="text-sm text-gray-600">Total Pendaftar</p>
+                    <p class="text-2xl font-bold text-gray-800" id="total-registrations">0</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <p class="text-sm text-gray-600">Pending</p>
+                    <p class="text-2xl font-bold text-gray-800" id="pending-registrations">0</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <p class="text-sm text-gray-600">Approved</p>
+                    <p class="text-2xl font-bold text-gray-800" id="approved-registrations">0</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <p class="text-sm text-gray-600">Rejected</p>
+                    <p class="text-2xl font-bold text-gray-800" id="rejected-registrations">0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-[#3d6625]">Pendaftaran Terbaru</h2>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full table-auto">
+                  <thead>
+                    <tr class="border-b">
+                      <th class="text-left py-2 px-4">No. Pendaftaran</th>
+                      <th class="text-left py-2 px-4">Nama</th>
+                      <th class="text-left py-2 px-4">Sekolah Asal</th>
+                      <th class="text-left py-2 px-4">Status</th>
+                      <th class="text-left py-2 px-4">Tanggal</th>
+                      <th class="text-left py-2 px-4">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recent-registrations">
+                    <tr>
+                      <td colspan="6" class="text-center py-8 text-gray-500">Memuat data...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      async function loadDashboardData() {
+        try {
+          const res = await fetch('../public/php/dashboard-api.php', { credentials: 'same-origin' });
+          if (!res.ok) {
+            if (res.status === 401) {
+              showStatus('Anda harus login terlebih dahulu.', true);
+            } else {
+              showStatus('Gagal memuat data. Silakan coba lagi.', true);
+            }
+            return;
+          }
+
+          const data = await res.json();
+          document.getElementById('total-registrations').textContent = data.stats.total || 0;
+          document.getElementById('pending-registrations').textContent = data.stats.pending || 0;
+          document.getElementById('approved-registrations').textContent = data.stats.approved || 0;
+          document.getElementById('rejected-registrations').textContent = data.stats.rejected || 0;
+
+          const tbody = document.getElementById('recent-registrations');
+          if (data.recent.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center py-8 text-gray-500">Belum ada pendaftaran</td></tr>';
+            return;
+          }
+
+          tbody.innerHTML = data.recent.map(reg => `
+            <tr class="border-b hover:bg-gray-50">
+              <td class="py-2 px-4">${reg.registration_number}</td>
+              <td class="py-2 px-4">${reg.nama_lengkap}</td>
+              <td class="py-2 px-4">${reg.sekolah_asal}</td>
+              <td class="py-2 px-4">
+                <span class="px-2 py-1 rounded-full text-xs font-medium ${statusClass(reg.status)}">${reg.status}</span>
+              </td>
+              <td class="py-2 px-4">${new Date(reg.submitted_at).toLocaleDateString('id-ID')}</td>
+              <td class="py-2 px-4"><a href="view-registration.php?id=${reg.id}" class="text-[#3d6625] hover:text-[#5a9a35]">Lihat</a></td>
+            </tr>
+          `).join('');
+        } catch (error) {
+          console.error(error);
+          showStatus('Terjadi kesalahan saat memuat data.', true);
+        }
+      }
+
+      function statusClass(status) {
+        switch (status) {
+          case 'approved': return 'bg-green-100 text-green-800';
+          case 'rejected': return 'bg-red-100 text-red-800';
+          case 'verified': return 'bg-blue-100 text-blue-800';
+          default: return 'bg-yellow-100 text-yellow-800';
+        }
+      }
+
+      function showStatus(message, isError = false) {
+        const banner = document.getElementById('status-banner');
+        banner.textContent = message;
+        banner.classList.remove('hidden', 'bg-yellow-50', 'text-yellow-800', 'border-yellow-200', 'bg-red-50', 'text-red-800', 'border-red-200');
+        banner.classList.add(isError ? 'bg-red-50' : 'bg-yellow-50');
+        banner.classList.add(isError ? 'text-red-800' : 'text-yellow-800');
+        banner.classList.add(isError ? 'border-red-200' : 'border-yellow-200');
+      }
+
+      // Log page view
+      fetch('../public/php/log-activity-api.php', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({activity: 'Mengakses dashboard admin'})
+      }).catch(console.error);
+
+      loadDashboardData();
+      // Refresh dashboard data every 15 seconds
+      setInterval(loadDashboardData, 15000);
+
+      // Set active sidebar item
+      const currentPage = window.location.pathname.split('/').pop();
+      const sidebarLinks = document.querySelectorAll('nav a');
+      sidebarLinks.forEach(link => {
+        link.classList.remove('bg-[#3d6625]', 'text-white');
+        link.classList.add('text-gray-700', 'hover:bg-[#f0f9eb]');
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('bg-[#3d6625]', 'text-white');
+          link.classList.remove('text-gray-700', 'hover:bg-[#f0f9eb]');
+        }
+      });
+
+    </script>
+  </body>
+</html>
+

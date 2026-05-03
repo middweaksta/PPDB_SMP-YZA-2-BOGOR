@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visi & Misi - SMP YZA 2 Bogor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html, body { height: 100%; margin: 0; }
+    </style>
+  </head>
+
+  <body>
+    <div class="min-h-screen bg-white">
+      <!-- Header -->
+      <header class="fixed inset-x-0 top-0 w-full bg-[#3d6625] py-3 px-4 md:px-6 flex items-center justify-between shadow-md z-50">
+        <a href="index.html" class="flex items-center gap-2 md:gap-3">
+          <img src="https://www.upload.ee/image/19236257/BYZAD.png" alt="Logo SMP YZA 2 Bogor" class="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover">
+          <span class="text-white text-lg md:text-xl font-bold tracking-wide">SMP YZA 2 BOGOR</span>
+        </a>
+
+        <!-- Hamburger Menu Button (Mobile) -->
+        <button id="hamburgerBtn" class="md:hidden text-white text-2xl focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-2" id="navMenu">
+          <a href="index.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Home</a>
+          <a href="tentang.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Tentang</a>
+          <a href="visi-misi.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Visi & Misi</a>
+          <a href="guru.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Guru</a>
+          <a href="kontak.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Kontak</a>
+          <div class="ml-2 h-6 w-px bg-white/30"></div>
+          <a href="ppdb.html" class="px-5 py-2 bg-[#5a9a35] text-white rounded-lg hover:bg-[#6bb044] transition-all font-medium text-sm">PPDB</a>
+          <a href="login-admin.html" class="px-5 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20 text-sm">Login</a>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-[#2d4a1a] flex flex-col gap-2 p-4 md:hidden">
+          <a href="index.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Home</a>
+          <a href="tentang.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Tentang</a>
+          <a href="visi-misi.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Visi & Misi</a>
+          <a href="guru.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Guru</a>
+          <a href="kontak.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Kontak</a>
+          <a href="ppdb.html" class="px-5 py-2 bg-[#5a9a35] text-white rounded-lg hover:bg-[#6bb044] transition-all font-medium text-sm">PPDB</a>
+          <a href="login-admin.html" class="px-5 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20 text-sm">Login</a>
+        </nav>
+      </header>
+
+      <!-- Content -->
+      <div class="max-w-5xl mx-auto py-16 px-6">
+        <div class="bg-white rounded-2xl shadow-lg p-10">
+          <!-- Visi Section -->
+          <div class="mb-12">
+            <h2 class="text-3xl font-bold text-[#3d6625] mb-2">Visi</h2>
+            <div class="w-16 h-1 bg-[#5a9a35] mb-6"></div>
+
+            <div class="bg-[#f0f9eb] rounded-lg p-6 border-l-4 border-[#5a9a35]">
+              <div class="flex gap-4">
+                <svg class="w-6 h-6 text-[#5a9a35] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <p class="text-gray-800 leading-relaxed">
+                  "Terwujudnya Peserta didik yang beriman dan bertaqwa kepada Tuhan Yang Maha Esa, bernalar kritis,
+                  kreativitas dan mandiri."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Misi Section -->
+          <div>
+            <h2 class="text-3xl font-bold text-[#3d6625] mb-2">Misi</h2>
+            <div class="w-16 h-1 bg-[#5a9a35] mb-6"></div>
+
+            <div class="space-y-4">
+              <div class="bg-[#f0f9eb] rounded-lg p-6 border-l-4 border-[#5a9a35]">
+                <div class="flex gap-4">
+                  <svg class="w-6 h-6 text-[#5a9a35] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p class="text-gray-800 leading-relaxed">Melaksanakan nilai - nilai keislaman dalam etika kehidupan ucapan serta perilaku pada kehidupan sehari - hari.</p>
+                </div>
+              </div>
+
+              <div class="bg-[#f0f9eb] rounded-lg p-6 border-l-4 border-[#5a9a35]">
+                <div class="flex gap-4">
+                  <svg class="w-6 h-6 text-[#5a9a35] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p class="text-gray-800 leading-relaxed">Mengembangkan diri secara pribadi dan profesional. Ini mencakup upaya untuk terus belajar, tumbuh, dan meningkatkan keterampilan serta pengetahuan agar dapat mengatasi tantangan dengan percaya diri.</p>
+                </div>
+              </div>
+
+              <div class="bg-[#f0f9eb] rounded-lg p-6 border-l-4 border-[#5a9a35]">
+                <div class="flex gap-4">
+                  <svg class="w-6 h-6 text-[#5a9a35] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p class="text-gray-800 leading-relaxed">Mengembangkan ide - ide baru dan inovatif dalam berbagai aspek kehidupan, baik dalam, seni, atau masalah sehari hari.</p>
+                </div>
+              </div>
+
+              <div class="bg-[#f0f9eb] rounded-lg p-6 border-l-4 border-[#5a9a35]">
+                <div class="flex gap-4">
+                  <svg class="w-6 h-6 text-[#5a9a35] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <p class="text-gray-800 leading-relaxed">Mewujudkan lingkungan sekolah yang nyaman, aman, sehat dengan menanamkan PHBS.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Hamburger menu toggle for mobile
+      document.getElementById('hamburgerBtn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when a link is clicked
+      document.getElementById('mobileMenu').addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          this.classList.add('hidden');
+        }
+      });
+
+      // Set active nav link based on current page
+      function setActiveNavLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').split('/').pop();
+          if (href === currentPage) {
+            link.classList.add('bg-white', 'text-[#3d6625]', 'font-medium');
+            link.classList.remove('text-white', 'hover:bg-[#4a7c2c]');
+          } else {
+            link.classList.remove('bg-white', 'text-[#3d6625]', 'font-medium');
+            link.classList.add('text-white', 'hover:bg-[#4a7c2c]');
+          }
+        });
+      }
+
+      // Set active link on page load
+      document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+  </body>
+</html>
+

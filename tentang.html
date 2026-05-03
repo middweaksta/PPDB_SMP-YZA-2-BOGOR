@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang - SMP YZA 2 Bogor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html, body { height: 100%; margin: 0; }
+      .glass { backdrop-filter: blur(20px); background: rgba(255,255,255,0.25); }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-br from-emerald-50 to-green-50 min-h-screen">
+    <!-- Header - konsisten -->
+    <header class="fixed inset-x-0 top-0 w-full bg-[#3d6625] py-3 px-4 md:px-6 flex items-center justify-between shadow-md z-50">
+      <a href="index.html" class="flex items-center gap-2 md:gap-3">
+        <img src="https://www.upload.ee/image/19236257/BYZAD.png" alt="Logo SMP YZA 2 Bogor" class="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover">
+        <span class="text-white text-lg md:text-xl font-bold tracking-wide">SMP YZA 2 BOGOR</span>
+      </a>
+
+      <!-- Hamburger Menu Button (Mobile) -->
+      <button id="hamburgerBtn" class="md:hidden text-white text-2xl focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-2" id="navMenu">
+        <a href="index.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Home</a>
+        <a href="tentang.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Tentang</a>
+        <a href="visi-misi.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Visi & Misi</a>
+        <a href="guru.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Guru</a>
+        <a href="kontak.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Kontak</a>
+        <div class="ml-2 h-6 w-px bg-white/30"></div>
+        <a href="ppdb.html" class="px-5 py-2 bg-[#5a9a35] text-white rounded-lg hover:bg-[#6bb044] transition-all font-medium text-sm">PPDB</a>
+        <a href="login-admin.html" class="px-5 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20 text-sm">Login</a>
+      </nav>
+
+      <!-- Mobile Navigation Menu -->
+      <nav id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-[#2d4a1a] flex flex-col gap-2 p-4 md:hidden">
+        <a href="index.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Home</a>
+        <a href="tentang.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Tentang</a>
+        <a href="visi-misi.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Visi & Misi</a>
+        <a href="guru.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Guru</a>
+        <a href="kontak.html" class="nav-link px-5 py-2 rounded-lg transition-all text-white hover:bg-[#4a7c2c] text-sm">Kontak</a>
+        <a href="ppdb.html" class="px-5 py-2 bg-[#5a9a35] text-white rounded-lg hover:bg-[#6bb044] transition-all font-medium text-sm">PPDB</a>
+        <a href="login-admin.html" class="px-5 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20 text-sm">Login</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-24 md:pt-28 pb-16 md:pb-20 bg-gradient-to-r from-[#3d6625]/90 to-emerald-700/90 text-white relative">
+      <div class="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
+      <div class="relative max-w-6xl mx-auto px-4 md:px-6">
+        <div class="text-center">
+          <h1 class="text-3xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 drop-shadow-2xl leading-tight">
+            TENTANG KAMI
+          </h1>
+          <p class="text-lg md:text-xl lg:text-2xl font-light opacity-95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+            SMP YZA 2 Bogor - Membangun Generasi Qur'ani Berakhlak Mulia
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 md:px-6 pb-16 md:pb-20 -mt-6 md:-mt-8 space-y-10 md:space-y-12">
+      <!-- Profil Sekolah -->
+      <section class="glass rounded-4xl p-16 shadow-2xl border border-white/30 backdrop-blur-xl">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl font-black bg-gradient-to-r from-emerald-600 to-[#3d6625] bg-clip-text text-transparent mb-6">Profil Sekolah</h2>
+          <div class="w-32 h-1 bg-gradient-to-r from-emerald-500 to-transparent mx-auto rounded-full shadow-lg"></div>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p class="text-xl text-gray-800 leading-relaxed mb-8 opacity-90">
+              SMP YZA 2 Bogor adalah sekolah yang berfokus pada pembentukan karakter, penguatan keagamaan, dan 
+              pengembangan potensi peserta didik. Memasuki tahun ajaran 2026/2027, di bawah kepemimpinan 
+              <strong class="text-[#3d6625] font-bold">Drs. H. Asep Sapei</strong>, sekolah ini menegaskan arah pendidikannya melalui visi, 
+              misi, dan pembiasaan yang konsisten untuk membentuk generasi yang beriman, berilmu, dan berakhlak mulia.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 mt-12">
+              <div class="text-center p-6 bg-white/50 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+                <div class="text-3xl font-black text-emerald-600 mb-2">BISSA</div>
+                <p class="text-sm font-semibold text-gray-700 uppercase tracking-wide">Budaya Sekolah</p>
+                <p class="text-xs text-gray-600 mt-1">Bersih, Indah, Sehat, Sopan, Aman, Agamis</p>
+              </div>
+              <div class="text-center p-6 bg-white/50 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+                <div class="text-3xl font-bold text-[#3d6625] mb-2">50+</div>
+                <p class="text-sm font-semibold text-gray-700 uppercase tracking-wide">Siswa Aktif</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative">
+            <div class="bg-gradient-to-br from-emerald-500/20 to-green-500/20 rounded-3xl p-12 shadow-2xl border-2 border-white/30">
+              <!-- School achievement stats or image placeholder -->
+              <div class="text-center">
+                <svg class="w-32 h-32 mx-auto mb-8 text-emerald-400 drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+                <h3 class="text-2xl font-bold text-white drop-shadow-lg mb-2">Berorientasi Prestasi</h3>
+                <p class="text-lg text-white/90 drop-shadow-md">Akademik • Karakter • Keagamaan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Keunggulan Cards -->
+      <section class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="group bg-white/70 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-white/50 hover:border-emerald-200">
+          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-2xl">
+            <svg class="w-10 h-10 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-emerald-600 transition-colors">Pendidikan Berkualitas</h3>
+          <p class="text-gray-600 text-center leading-relaxed">Kurikulum terintegrasi karakter, agama, dan akademik dengan metode pengajaran inovatif</p>
+        </div>
+
+        <div class="group bg-white/70 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-white/50 hover:border-emerald-200">
+          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-2xl">
+            <svg class="w-10 h-10 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-emerald-600 transition-colors">Guru Profesional</h3>
+          <p class="text-gray-600 text-center leading-relaxed">Tenaga pendidik bersertifikasi dengan komitmen tinggi terhadap kualitas pembelajaran</p>
+        </div>
+
+        <div class="group bg-white/70 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-white/50 hover:border-emerald-200">
+          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-2xl">
+            <svg class="w-10 h-10 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-emerald-600 transition-colors">Budaya BISSA</h3>
+          <p class="text-gray-600 text-center leading-relaxed">Bersih, Indah, Sehat, Sopan, Aman, Agamis - identitas budaya sekolah unggulan</p>
+        </div>
+
+        <div class="group bg-white/70 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-white/50 hover:border-emerald-200">
+          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-2xl">
+            <svg class="w-10 h-10 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-emerald-600 transition-colors">Prestasi Terbukti</h3>
+          <p class="text-gray-600 text-center leading-relaxed">Lulusan berprestasi akademik dan non-akademik tingkat kota dan nasional</p>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="text-center py-20 bg-gradient-to-r from-emerald-600 to-[#3d6625] rounded-4xl shadow-2xl text-white">
+        <h2 class="text-5xl font-black mb-6 drop-shadow-2xl">Siap Bergabung?</h2>
+        <p class="text-xl mb-12 opacity-95 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
+          Daftarkan putra-putri Anda sekarang juga untuk tahun ajaran baru
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="ppdb.html" class="bg-white text-[#3d6625] px-12 py-6 rounded-3xl font-black text-xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 transform">DAFTAR PPDB SEKARANG</a>
+          <a href="kontak.html" class="border-2 border-white px-12 py-6 rounded-3xl font-bold text-xl hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl">Hubungi Kami</a>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Hamburger menu toggle for mobile
+      document.getElementById('hamburgerBtn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when a link is clicked
+      document.getElementById('mobileMenu').addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          this.classList.add('hidden');
+        }
+      });
+
+      // Set active nav link based on current page
+      function setActiveNavLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').split('/').pop();
+          if (href === currentPage) {
+            link.classList.add('bg-white', 'text-[#3d6625]', 'font-medium');
+            link.classList.remove('text-white', 'hover:bg-[#4a7c2c]');
+          } else {
+            link.classList.remove('bg-white', 'text-[#3d6625]', 'font-medium');
+            link.classList.add('text-white', 'hover:bg-[#4a7c2c]');
+          }
+        });
+      }
+
+      // Set active link on page load
+      document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+  </body>
+</html>
+

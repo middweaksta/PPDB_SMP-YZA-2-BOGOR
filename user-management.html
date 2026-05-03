@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola User & Logs - SMP YZA 2 Bogor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen">
+        <header class="bg-[#3d6625] py-3 px-6 flex items-center justify-between shadow-md">
+            <a href="dashboard.html" class="flex items-center gap-3">
+                <img src="https://www.upload.ee/image/19236257/BYZAD.png" alt="Logo SMP YZA 2 Bogor" class="w-12 h-12 rounded-full object-cover">
+                <span class="text-white text-xl font-bold tracking-wide">YZA 2 BOGOR - ADMIN</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="../public/php/logout.php" onclick="return confirm('Logout?')" class="px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20">Logout</a>
+            </div>
+        </header>
+
+        <div class="flex">
+            <nav class="w-64 bg-white shadow-lg min-h-screen">
+                <div class="p-6">
+                    <h2 class="text-lg font-semibold text-[#3d6625] mb-4">Menu Admin</h2>
+                    <ul class="space-y-2">
+                        <li><a href="dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-[#f0f9eb] rounded-lg transition-colors">Dashboard</a></li>
+                        <li><a href="user-management.html" class="block px-4 py-2 bg-[#3d6625] text-white rounded-lg transition-colors">Kelola User & Logs</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="flex-1 p-6">
+                <div class="max-w-6xl mx-auto">
+                    <h1 class="text-3xl font-bold text-[#3d6625] mb-8">Kelola User Admin & Logs Aktivitas</h1>
+                    
+                    <!-- User Management Section -->
+                    <div class="mb-12">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold text-[#3d6625]">Kelola User Admin</h2>
+                            <button onclick="showAddUserModal()" class="bg-[#3d6625] text-white px-6 py-2 rounded-lg hover:bg-[#5a9a35] transition-all">+ Tambah User</button>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <table class="w-full">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Username</th>
+                                        <th class="px-6 py-3 text-left">Email</th>
+                                        <th class="px-6 py-3 text-left">Role</th>
+                                        <th class="px-6 py-3 text-left">Status</th>
+                                        <th class="px-6 py-3 text-left">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="users-table">
+                                    <tr><td colspan="5" class="text-center py-8 text-gray-500">Loading...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Activity Logs Section -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-[#3d6625] mb-6">Logs Aktivitas Sistem</h2>
+                        <div class="bg-white rounded-xl shadow-lg p-6">
+                            <div class="overflow-x-auto">
+                                <table class="w-full table-auto">
+                                    <thead>
+                                        <tr class="bg-gray-50">
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Waktu</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">User</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aktivitas</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">IP</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">User Agent</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="logs-table" class="divide-y divide-gray-200">
+                                        <tr><td colspan="5" class="text-center py-8 text-gray-500">Loading...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Add User Modal -->
+        <div id="add-user-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+                <h3 class="text-2xl font-bold text-[#3d6625] mb-6">Tambah User Baru</h3>
+                <form id="add-user-form">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Username</label>
+                            <input type="text" id="new-username" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3d6625]">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Email</label>
+                            <input type="email" id="new-email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3d6625]">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Nama Lengkap</label>
+                            <input type="text" id="new-name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3d6625]">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Role</label>
+                            <select id="new-role" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3d6625]">
+                                <option value="admin">Admin</option>
+                                <option value="super_admin">Super Admin</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Password</label>
+                            <input type="password" id="new-password" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3d6625]">
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mt-8">
+                        <button type="submit" class="flex-1 bg-[#3d6625] text-white py-3 rounded-lg hover:bg-[#5a9a35]">Tambah User</button>
+                        <button type="button" onclick="hideAddUserModal()" class="flex-1 bg-gray-300 py-3 rounded-lg hover:bg-gray-400">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+        // User Management Functions
+        async function loadUsers() {
+            try {
+                const res = await fetch('../public/php/user-api.php?action=list', { credentials: 'same-origin' });
+                if (!res.ok) throw new Error('Unauthorized');
+                const users = await res.json();
+                const tbody = document.getElementById('users-table');
+                tbody.innerHTML = users.map(user => `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium">${user.username}</td>
+                        <td class="px-6 py-4">${user.email}</td>
+                        <td class="px-6 py-4">
+                            <span class="px-2 py-1 rounded-full text-xs ${user.role === 'super_admin' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'}">${user.role.replace('_', ' ').toUpperCase()}</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-medium ${user.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">${user.status === 'active' ? 'Aktif' : 'Nonaktif'}</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <button onclick="toggleStatus(${user.id}, '${user.status}')" class="mr-2 px-3 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 text-sm">${user.status === 'active' ? 'Nonaktifkan' : 'Aktifkan'}</button>
+                            <button onclick="deleteUser(${user.id})" class="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 text-sm">Hapus</button>
+                        </td>
+                    </tr>
+                `).join('') || '<tr><td colspan="5" class="text-center py-8 text-gray-500">No users</td></tr>';
+            } catch (error) {
+                console.error('Load users failed:', error);
+                if (error.message.includes('Unauthorized')) {
+                    window.location = '../html/login-admin.php';
+                    return;
+                }
+                const tbody = document.getElementById('users-table');
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center py-8 text-red-500">Error loading users. Please login again or contact admin. <button onclick="loadUsers()" class="underline">Retry</button></td></tr>';
+            }
+        }
+
+        function showAddUserModal() {
+            document.getElementById('add-user-modal').classList.remove('hidden');
+        }
+
+        function hideAddUserModal() {
+            document.getElementById('add-user-modal').classList.add('hidden');
+            document.getElementById('add-user-form').reset();
+        }
+
+        document.getElementById('add-user-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('action', 'create');
+            formData.append('username', document.getElementById('new-username').value);
+            formData.append('email', document.getElementById('new-email').value);
+            formData.append('name', document.getElementById('new-name').value);
+            formData.append('role', document.getElementById('new-role').value);
+            formData.append('password', document.getElementById('new-password').value);
+            
+            try {
+                const res = await fetch('../public/php/user-api.php', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    body: formData
+                });
+                if (res.ok) {
+                    hideAddUserModal();
+                    loadUsers();
+                    alert('User berhasil dibuat!');
+                } else {
+                    const errorData = await res.json().catch(() => ({}));
+                    alert('Error: ' + (errorData.error || 'Unknown error'));
+                }
+            } catch {
+                alert('Network error');
+            }
+        });
+
+        async function toggleStatus(id, currentStatus) {
+            if (!confirm(`Yakin ${currentStatus === 'active' ? 'nonaktifkan' : 'aktifkan'} user ini?`)) return;
+            
+            const formData = new FormData();
+            formData.append('action', 'update_status');
+            formData.append('id', id);
+            formData.append('status', currentStatus === 'active' ? 'inactive' : 'active');
+            
+            try {
+                const res = await fetch('../public/php/user-api.php', { method: 'POST', credentials: 'same-origin', body: formData });
+                if (res.ok) loadUsers();
+            } catch {
+                alert('Error');
+            }
+        }
+
+        async function deleteUser(id) {
+            if (!confirm('Yakin hapus user ini?')) return;
+            
+            const formData = new FormData();
+            formData.append('action', 'delete');
+            formData.append('id', id);
+            
+            try {
+                const res = await fetch('../public/php/user-api.php', { method: 'POST', credentials: 'same-origin', body: formData });
+                if (res.ok) loadUsers();
+            } catch {
+                alert('Error');
+            }
+        }
+
+        // Logs Functions
+        async function loadLogs() {
+            try {
+                const res = await fetch('../public/php/logs-api.php', { credentials: 'same-origin' });
+                if (!res.ok) throw new Error('Unauthorized');
+                const logs = await res.json();
+                const tbody = document.getElementById('logs-table');
+                if (logs.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="text-center py-8 text-gray-500">No logs found</td></tr>';
+                } else {
+                    tbody.innerHTML = logs.map(log => `
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">${new Date(log.created_at).toLocaleString('id-ID')}</td>
+                            <td class="px-6 py-4 font-medium">${log.username || 'Guest'}</td>
+                            <td class="px-6 py-4">${log.activity}</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">${log.ip_address}</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">${log.user_agent?.substring(0,50)}...</td>
+                        </tr>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Load logs failed:', error);
+                if (error.message.includes('Unauthorized')) {
+                    window.location = '../html/login-admin.php';
+                    return;
+                }
+                const tbody = document.getElementById('logs-table');
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center py-8 text-red-500">Error loading logs. <button onclick="loadLogs()" class="underline">Retry</button></td></tr>';
+            }
+        }
+
+        // Log page view
+        fetch('../public/php/log-activity-api.php', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({activity: 'Mengakses halaman kelola user & logs'})
+        }).catch(console.error);
+        
+        // Initial load and refresh
+        loadUsers();
+        loadLogs();
+        setInterval(() => {
+            loadUsers();
+            loadLogs();
+        }, 10000);
+        </script>
+
+</body>
+</html>
+
+
