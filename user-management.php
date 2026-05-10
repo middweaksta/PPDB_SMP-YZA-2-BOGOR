@@ -32,7 +32,7 @@ window.initialLogs = <?= json_encode($logs, JSON_UNESCAPED_SLASHES | JSON_UNESCA
                 <span class="text-white text-xl font-bold tracking-wide">YZA 2 BOGOR - ADMIN</span>
             </a>
             <div class="flex items-center gap-4">
-                <span id="admin-name" class="text-white"><?php echo htmlspecialchars($_SESSION['admin_name'] ?? 'Admin'); ?></span>
+                <span id="admin-name" class="text-white">Selamat datang, <strong><?php echo htmlspecialchars($_SESSION['admin_name'] ?? 'Admin'); ?></strong></span>
                 <a href="../public/php/logout.php" onclick="return confirm('Logout?')" class="px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20">Logout</a>
             </div>
         </header>
@@ -45,12 +45,20 @@ window.initialLogs = <?= json_encode($logs, JSON_UNESCAPED_SLASHES | JSON_UNESCA
             <h2 class="text-lg font-semibold text-[#3d6625] mb-4">Menu Admin</h2>
             <ul class="space-y-2">
               <li>
-                <a href="dashboard.php" class="block px-4 py-2 rounded-lg transition-colors <?= $currentPage === 'dashboard.php' ? 'bg-[#3d6625] text-white' : 'text-gray-700 hover:bg-[#f0f9eb]' ?>">
+                <a href="dashboard.html" class="block px-4 py-2 rounded-lg transition-colors <?= $currentPage === 'dashboard.php' ? 'bg-[#3d6625] text-white' : 'text-gray-700 hover:bg-[#f0f9eb]' ?>">
                   <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z"></path>
                   </svg>
                   Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="ppdb-schedule.php" class="block px-4 py-2 rounded-lg transition-colors <?= $currentPage === 'ppdb-schedule.php' ? 'bg-[#3d6625] text-white' : 'text-gray-700 hover:bg-[#f0f9eb]' ?>">
+                  <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                  </svg>
+                    Kelola Jadwal PPDB  
                 </a>
               </li>
               <li>
@@ -312,7 +320,14 @@ async function deleteUser(id) {
             body: JSON.stringify({activity: 'Mengakses halaman kelola user & logs'})
         }).catch(console.error);
         </script>
+        <script>
+  // dipakai oleh ppdb-schedule.html
+  window.__ADMIN_NAME__ = <?php echo json_encode($_SESSION['admin_name'] ?? 'Admin'); ?>;
 
+  // active page
+  window.__CURRENT_PAGE__ = <?php echo json_encode($currentPage); ?>;
+</script>
+        
 </body>
 </html>
 

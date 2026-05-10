@@ -71,39 +71,8 @@
             </div>
             <div class="w-16 h-1 bg-[#5a9a35] mb-8"></div>
 
-            <div class="space-y-4">
-              <div class="flex items-center gap-4 p-4 rounded-lg border-l-4 bg-[#f0f9eb] border-[#5a9a35]">
-                <div class="w-3 h-3 rounded-full bg-[#5a9a35]"></div>
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800">Pendaftaran Online</p>
-                  <p class="text-sm text-gray-600">1 Mei - 30 Juni 2026</p>
-                </div>
-                <span class="px-3 py-1 bg-[#5a9a35] text-white text-sm rounded-full font-medium">Aktif</span>
-              </div>
-
-              <div class="flex items-center gap-4 p-4 rounded-lg border-l-4 bg-gray-50 border-gray-300">
-                <div class="w-3 h-3 rounded-full bg-gray-400"></div>
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800">Verifikasi Berkas</p>
-                  <p class="text-sm text-gray-600">1 - 5 Juli 2026</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 p-4 rounded-lg border-l-4 bg-gray-50 border-gray-300">
-                <div class="w-3 h-3 rounded-full bg-gray-400"></div>
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800">Pengumuman Hasil</p>
-                  <p class="text-sm text-gray-600">15 Juli 2026</p>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-4 p-4 rounded-lg border-l-4 bg-gray-50 border-gray-300">
-                <div class="w-3 h-3 rounded-full bg-gray-400"></div>
-                <div class="flex-1">
-                  <p class="font-semibold text-gray-800">Daftar Ulang</p>
-                  <p class="text-sm text-gray-600">16 - 20 Juli 2026</p>
-                </div>
-              </div>
+            <div id="ppdb-schedule-list" class="space-y-4">
+              <div class="text-center py-8 text-gray-500">Memuat jadwal PPDB...</div>
             </div>
           </div>
         </div>
@@ -469,6 +438,7 @@
           alert('Pendaftaran berhasil! Nomor pendaftaran Anda: ' + result.registration_number);
           closeModal();
           this.reset();
+          // Karena status langsung diset approved, data akan muncul langsung di dashboard admin.
         } else if (result.isDuplicate) {
           // Handle duplicate registration
           alert('⚠️ PENDAFTARAN DUPLIKAT TERDETEKSI\n\n' + result.message);
@@ -490,6 +460,49 @@
       if (e.target === this) {
         closeModal();
       }
+    });
+
+    async function loadPpdbSchedule() {
+      const scheduleList = document.getElementById('ppdb-schedule-list');
+      try {
+        const response = await fetch('../public/php/ppdb-schedule.php', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Unable to load schedule');
+        const data = await response.json();
+        if (!Array.isArray(data.items)) throw new Error('Invalid schedule format');
+        renderPpdbSchedule(data.items);
+      } catch (error) {
+        console.error('Error loading PPDB schedule:', error);
+        scheduleList.innerHTML = '<div class="text-center py-8 text-red-500">Gagal memuat jadwal PPDB. Silakan coba lagi nanti.</div>';
+      }
+    }
+
+    function renderPpdbSchedule(items) {
+      const scheduleList = document.getElementById('ppdb-schedule-list');
+      if (!items || items.length === 0) {
+        scheduleList.innerHTML = '<div class="text-center py-8 text-gray-500">Jadwal PPDB belum tersedia.</div>';
+        return;
+      }
+
+      scheduleList.innerHTML = items.map(item => {
+        const activeClass = item.active ? 'bg-[#f0f9eb] border-[#5a9a35]' : 'bg-gray-50 border-gray-300';
+        const badge = item.status ? `<span class="px-3 py-1 bg-[#5a9a35] text-white text-sm rounded-full font-medium">${item.status}</span>` : '';
+
+        return `
+          <div class="flex items-center gap-4 p-4 rounded-lg border-l-4 ${activeClass}">
+            <div class="w-3 h-3 rounded-full ${item.active ? 'bg-[#5a9a35]' : 'bg-gray-400'}"></div>
+            <div class="flex-1">
+              <p class="font-semibold text-gray-800">${item.title}</p>
+              <p class="text-sm text-gray-600">${item.detail}</p>
+            </div>
+            ${badge}
+          </div>
+        `;
+      }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setActiveNavLink();
+      loadPpdbSchedule();
     });
   </script>
 </html>

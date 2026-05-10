@@ -24,8 +24,31 @@
                 <div class="p-6">
                     <h2 class="text-lg font-semibold text-[#3d6625] mb-4">Menu Admin</h2>
                     <ul class="space-y-2">
-                        <li><a href="dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-[#f0f9eb] rounded-lg transition-colors">Dashboard</a></li>
-                        <li><a href="user-management.html" class="block px-4 py-2 bg-[#3d6625] text-white rounded-lg transition-colors">Kelola User & Logs</a></li>
+                        <li>
+                <a href="dashboard.html" class="block px-4 py-2 rounded-lg transition-colors <?= $currentPage === 'dashboard.html' ? 'bg-[#3d6625] text-white' : 'text-gray-700 hover:bg-[#f0f9eb]' ?>">
+                  <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z"></path>
+                  </svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="ppdb-schedule.php" class="block px-4 py-2 rounded-lg transition-colors <?= $currentPage === 'ppdb-schedule.php' ? 'bg-[#3d6625] text-white' : 'text-gray-700 hover:bg-[#f0f9eb]' ?>">
+                  <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  Kelola Jadwal PPDB
+                </a>
+              </li>
+              <li>
+                <a href="user-management.php" class="block px-4 py-2 rounded-lg transition-colors <?= $currentPage === 'user-management.php' ? 'bg-[#3d6625] text-white' : 'text-gray-700 hover:bg-[#f0f9eb]' ?>">
+                  <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                  </svg>
+                  Kelola User & Logs
+                </a>
+              </li>
                     </ul>
                 </div>
             </nav>
@@ -273,6 +296,30 @@
             loadLogs();
         }, 10000);
         </script>
+        <script>
+fetch('../public/php/log-activity-api.php', {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        activity: 'Mengakses halaman kelola user & logs'
+    })
+})
+.then(async response => {
+    const result = await response.json();
+
+    if (!response.ok) {
+        console.error('Log gagal:', result);
+    } else {
+        console.log('Log berhasil:', result);
+    }
+})
+.catch(error => {
+    console.error('Fetch error:', error);
+});
+</script>
 
 </body>
 </html>

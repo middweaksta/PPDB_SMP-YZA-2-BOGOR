@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "title": "Pendaftaran Online",
+            "detail": "1 Mei - 30 Juni 2026",
+            "status": "Active",
+            "active": true
+        },
+        {
+            "title": "Verifikasi Berkas",
+            "detail": "1 - 5 Juli 2026",
+            "status": "Unavaible",
+            "active": false
+        },
+        {
+            "title": "Pengumuman Hasil",
+            "detail": "15 Juli 2026",
+            "status": "Unavaible",
+            "active": false
+        },
+        {
+            "title": "Daftar Ulang",
+            "detail": "16 - 20 Juli 2026",
+            "status": "Unavaible",
+            "active": false
+        }
+    ]
+}
