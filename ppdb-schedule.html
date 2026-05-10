@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Jadwal PPDB - SMP YZA 2 Bogor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="min-h-screen bg-gray-100">
+
+      <!-- Header -->
+      <header class="bg-[#3d6625] py-3 px-6 flex items-center justify-between shadow-md">
+        <a href="dashboard.php" class="flex items-center gap-3">
+          <img src="https://www.upload.ee/image/19236257/BYZAD.png" alt="Logo SMP YZA 2 Bogor" class="w-12 h-12 rounded-full object-cover">
+          <span class="text-white text-xl font-bold tracking-wide">YZA 2 BOGOR - ADMIN</span>
+        </a>
+
+        <div class="flex items-center gap-4">
+          <span class="text-white">
+            Selamat datang, <strong id="admin-name">Admin</strong>
+          </span>
+          <a href="../public/php/logout.php" class="px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all border border-white/20">Logout</a>
+        </div>
+      </header>
+
+      <div class="flex">
+        <!-- Sidebar -->
+        <nav class="w-64 bg-white shadow-lg min-h-screen">
+          <div class="p-6">
+            <h2 class="text-lg font-semibold text-[#3d6625] mb-4">Menu Admin</h2>
+            <ul class="space-y-2">
+              <li>
+                <a href="dashboard.php" data-nav="dashboard.php" class="block px-4 py-2 rounded-lg transition-colors"> 
+                  <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z"></path>
+                  </svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="ppdb-schedule.php" data-nav="ppdb-schedule.php" class="block px-4 py-2 rounded-lg transition-colors">
+                  <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  Kelola Jadwal PPDB
+                </a>
+              </li>
+              <li>
+                <a href="user-management.php" data-nav="user-management.php" class="block px-4 py-2 rounded-lg transition-colors">
+                  <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                  </svg>
+                  Kelola User & Logs
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+          <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl font-bold text-[#3d6625] mb-6">Kelola Jadwal PPDB</h1>
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+              <p class="text-gray-600 mb-4">Ubah jadwal PPDB yang tampil di halaman publik.</p>
+              <form id="schedule-form" class="space-y-4">
+                <div id="schedule-items" class="space-y-4">
+                  <!-- 4 item rows -->
+                  <div class="grid md:grid-cols-12 gap-3 items-end" data-index="0">
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Nama Kegiatan</label>
+                      <input id="schedule-title-0" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: Pendaftaran Online">
+                    </div>
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Tanggal / Rentang</label>
+                      <input id="schedule-detail-0" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: 1 Mei - 30 Juni 2026">
+                    </div>
+                    <div class="md:col-span-3">
+                      <label class="block text-sm font-medium text-gray-700">Label Status</label>
+                      <input id="schedule-status-0" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: Aktif">
+                    </div>
+                    <div class="md:col-span-1 flex items-center gap-2">
+                      <input id="schedule-active-0" type="checkbox" class="h-5 w-5 text-[#3d6625] border-gray-300 rounded" />
+                      <label for="schedule-active-0" class="text-sm text-gray-700">Aktif</label>
+                    </div>
+                  </div>
+
+                  <div class="grid md:grid-cols-12 gap-3 items-end" data-index="1">
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Nama Kegiatan</label>
+                      <input id="schedule-title-1" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: Verifikasi Berkas">
+                    </div>
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Tanggal / Rentang</label>
+                      <input id="schedule-detail-1" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: 1 - 5 Juli 2026">
+                    </div>
+                    <div class="md:col-span-3">
+                      <label class="block text-sm font-medium text-gray-700">Label Status</label>
+                      <input id="schedule-status-1" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: ">
+                    </div>
+                    <div class="md:col-span-1 flex items-center gap-2">
+                      <input id="schedule-active-1" type="checkbox" class="h-5 w-5 text-[#3d6625] border-gray-300 rounded" />
+                      <label for="schedule-active-1" class="text-sm text-gray-700">Aktif</label>
+                    </div>
+                  </div>
+
+                  <div class="grid md:grid-cols-12 gap-3 items-end" data-index="2">
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Nama Kegiatan</label>
+                      <input id="schedule-title-2" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: Pengumuman Hasil">
+                    </div>
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Tanggal / Rentang</label>
+                      <input id="schedule-detail-2" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: 15 Juli 2026">
+                    </div>
+                    <div class="md:col-span-3">
+                      <label class="block text-sm font-medium text-gray-700">Label Status</label>
+                      <input id="schedule-status-2" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: ">
+                    </div>
+                    <div class="md:col-span-1 flex items-center gap-2">
+                      <input id="schedule-active-2" type="checkbox" class="h-5 w-5 text-[#3d6625] border-gray-300 rounded" />
+                      <label for="schedule-active-2" class="text-sm text-gray-700">Aktif</label>
+                    </div>
+                  </div>
+
+                  <div class="grid md:grid-cols-12 gap-3 items-end" data-index="3">
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Nama Kegiatan</label>
+                      <input id="schedule-title-3" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: Daftar Ulang">
+                    </div>
+                    <div class="md:col-span-4">
+                      <label class="block text-sm font-medium text-gray-700">Tanggal / Rentang</label>
+                      <input id="schedule-detail-3" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: 16 - 20 Juli 2026">
+                    </div>
+                    <div class="md:col-span-3">
+                      <label class="block text-sm font-medium text-gray-700">Label Status</label>
+                      <input id="schedule-status-3" type="text" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#5a9a35] focus:ring-[#5a9a35]" placeholder="Contoh: ">
+                    </div>
+                    <div class="md:col-span-1 flex items-center gap-2">
+                      <input id="schedule-active-3" type="checkbox" class="h-5 w-5 text-[#3d6625] border-gray-300 rounded" />
+                      <label for="schedule-active-3" class="text-sm text-gray-700">Aktif</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <button type="submit" class="px-5 py-3 bg-[#3d6625] text-white rounded-lg hover:bg-[#5a9a35] transition-all">Simpan Jadwal</button>
+                  <button type="button" onclick="loadPpdbSchedule()" class="px-5 py-3 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition-all">Segarkan</button>
+                  <span id="schedule-message" class="text-sm text-green-600 hidden"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      // Active nav highlight (fallback for html file)
+      (function setActiveNav() {
+        const currentPage = window.location.pathname.split('/').pop() || 'ppdb-schedule.php';
+        document.querySelectorAll('a[data-nav]').forEach(link => {
+          const href = link.getAttribute('data-nav');
+          if (href === currentPage) {
+            link.classList.add('bg-[#3d6625]', 'text-white');
+            link.classList.remove('text-gray-700', 'hover:bg-[#f0f9eb]');
+          } else {
+            link.classList.remove('bg-[#3d6625]', 'text-white');
+            link.classList.add('text-gray-700', 'hover:bg-[#f0f9eb]');
+          }
+        });
+      })();
+
+      // If wrapper injects admin name into window.__ADMIN_NAME__
+      if (window.__ADMIN_NAME__) {
+        const el = document.getElementById('admin-name');
+        if (el) el.textContent = window.__ADMIN_NAME__;
+      }
+
+      async function loadPpdbSchedule() {
+        const message = document.getElementById('schedule-message');
+        if (message) {
+          message.classList.add('hidden');
+          message.classList.remove('text-red-600');
+          message.classList.add('text-green-600');
+        }
+
+        try {
+          const response = await fetch('../public/php/ppdb-schedule.php', { cache: 'no-store' });
+          if (!response.ok) throw new Error('Tidak dapat memuat jadwal.');
+          const data = await response.json();
+          if (!Array.isArray(data.items)) throw new Error('Format jadwal tidak valid.');
+
+          data.items.slice(0, 4).forEach((item, index) => {
+            const title = document.getElementById(`schedule-title-${index}`);
+            const detail = document.getElementById(`schedule-detail-${index}`);
+            const status = document.getElementById(`schedule-status-${index}`);
+            const active = document.getElementById(`schedule-active-${index}`);
+
+            if (title) title.value = item.title || '';
+            if (detail) detail.value = item.detail || '';
+            if (status) status.value = item.status || '';
+            if (active) active.checked = item.active === true || item.active === 'true';
+          });
+        } catch (error) {
+          console.error(error);
+          const message = document.getElementById('schedule-message');
+          if (message) {
+            message.textContent = 'Gagal memuat jadwal PPDB. Silakan coba lagi.';
+            message.classList.remove('hidden');
+            message.classList.remove('text-green-600');
+            message.classList.add('text-red-600');
+          }
+        }
+      }
+
+      async function savePpdbSchedule(event) {
+        event.preventDefault();
+        const message = document.getElementById('schedule-message');
+        if (message) {
+          message.classList.remove('text-red-600');
+          message.classList.add('text-green-600');
+        }
+
+        const items = [];
+        for (let index = 0; index < 4; index++) {
+          const title = document.getElementById(`schedule-title-${index}`).value.trim();
+          const detail = document.getElementById(`schedule-detail-${index}`).value.trim();
+          const status = document.getElementById(`schedule-status-${index}`).value.trim();
+          const active = document.getElementById(`schedule-active-${index}`).checked;
+
+          if (title && detail) {
+            items.push({ title, detail, status, active });
+          }
+        }
+
+        if (items.length === 0) {
+          if (message) {
+            message.textContent = 'Mohon isi minimal satu jadwal dengan nama kegiatan dan tanggal.';
+            message.classList.remove('hidden');
+            message.classList.remove('text-green-600');
+            message.classList.add('text-red-600');
+          }
+          return;
+        }
+
+        try {
+          const response = await fetch('../public/php/ppdb-schedule.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ items })
+          });
+          const result = await response.json();
+          if (!response.ok || !result.success) {
+            throw new Error(result.error || 'Gagal menyimpan jadwal.');
+          }
+
+          if (message) {
+            message.textContent = 'Jadwal PPDB berhasil disimpan.';
+            message.classList.remove('hidden');
+            message.classList.remove('text-red-600');
+            message.classList.add('text-green-600');
+          }
+        } catch (error) {
+          console.error(error);
+          if (message) {
+            message.textContent = 'Error menyimpan jadwal. Silakan coba lagi.';
+            message.classList.remove('hidden');
+            message.classList.remove('text-green-600');
+            message.classList.add('text-red-600');
+          }
+        }
+      }
+
+      document.getElementById('schedule-form').addEventListener('submit', savePpdbSchedule);
+      document.addEventListener('DOMContentLoaded', loadPpdbSchedule);
+    </script>
+</body>
+</html>
+
+
+
